@@ -53,12 +53,3 @@ class Word(models.Model):
 class Translation(models.Model):
 	translation = models.TextField()
 	word = models.ForeignKey('Word')
-
-
-
-
-
-
-
-
-
