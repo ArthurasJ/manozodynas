@@ -46,13 +46,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Word(models.Model):
 	word = models.CharField(max_length = 50, unique = True)
-	date_added = models.DateTimeField(_('date added'), default = timezone.now)
-	def __str__(self):
-		return self.word
+	date_added = models.DateTimeField(_('date added'), default=timezone.now)
 
 class Translation(models.Model):
-	translation = models.TextField()
+	translation = model.TextField()
 	word = models.ForeignKey('Word')
+	created_by = models.ForeignKey('User')
+
+
+
+
 
 
 

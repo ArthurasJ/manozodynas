@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+</head>
+
+<body>
+<p>Žodžiai:</p>
+<ul>
+	{% for word in words%}
+	<li>
+		Žodis: {{word.word}}, <div>Įkeltas: {{word.date_added}}</div>
+		<a href="/worddel/{{word.id}}">Trinti</a>
+		<a href="/translations/{{word.id}}">Apibrėžimai</a>
+	</li>
+	{% empty %}
+    Nėra įvestų žodžių.
+	{% endfor %}	
+</ul>
+
+<form id="add" action="" method="POST">{% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Pridėti naują">
+</form> 
+
+<a href="/translationadd/">Sukurti naują vertimą</a>
+
+</body>
+</html>

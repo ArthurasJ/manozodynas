@@ -66,3 +66,26 @@ class LoginTestCase(StatefulTesting):
         })
         self.assertStatusCode(200)
         self.selectOne('.errorlist')
+
+class WordAddCase(StatefulTesting):
+
+    def open_pages_test(self):
+        self.open(reverse('words'))
+        self.assertStatusCode(200)
+
+    def new_word_test(self):
+        self.open(reverse('words'))
+        self.selectForm('#add')
+        self.submitForm({
+            'word': 'zodis',
+        })
+        self.assertStatusCode(200)
+
+    def empty_field_test(self):
+        self.open(reverse('words'))
+        self.selectForm('#add')
+        self.submitForm({
+            'word': '',
+        })
+        self.assertStatusCode(200)
+        self.selectOne('.errorlist')

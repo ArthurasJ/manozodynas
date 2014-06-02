@@ -3,10 +3,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title></title>
+	<title></title>
 </head>
 
 <body>
-<a href="/words">Čia yra žodynas</a> 
+<form id="add" action="" method="POST">{% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Pridėti naują">
+</form> 
 </body>
 </html>
